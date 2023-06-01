@@ -1,0 +1,43 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+string decimalToOctal(int decimal) {
+    string octal;
+
+    while (decimal > 0.000) {
+        int residuo = decimal % 8;
+        octal = to_string(residuo) + octal;
+        decimal /= 8;
+    }
+
+    return octal;
+}
+string decimalToHexadecimal(int decimal) {
+    string hexadecimal;
+
+    while (decimal > 0.000) {
+        int residuo = decimal % 16;
+
+        if (residuo < 10)
+            hexadecimal = to_string(residuo) + hexadecimal;
+        else
+            hexadecimal = char('A' + residuo - 10) + hexadecimal;
+
+        decimal /= 16;
+    }
+
+    return hexadecimal;
+}
+int main() {
+    int decimal;
+
+    cout << "Ingrese un numero decimal: ";
+    cin >> decimal;
+    string octal = decimalToOctal(decimal);
+    cout << "Octal: " << octal << endl;
+    string hexadecimal = decimalToHexadecimal(decimal);
+    cout << "Hexadecimal: " << hexadecimal << endl;
+
+    return 0;
+}
